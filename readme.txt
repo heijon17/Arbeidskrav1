@@ -1,0 +1,1 @@
+Løsningen er laget i intelliJ og kan kjøres ved å kjøre main metoden i Client klassen.
