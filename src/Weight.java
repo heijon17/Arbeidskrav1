@@ -1,16 +1,17 @@
 import java.util.Objects;
 
 /**
- * Write a description of class Weight here.
+ * En vekt med et spesifikt vektintervall.
  *
  * @author Jon-Martin Heiberg
- * @version v0.1
+ * @version v1.0
  */
 public class Weight extends Meter
 {
     private double minWeight;
     private double maxWeight;
 
+    //Standard konstruktør, brukes ikke i dette prosjektet.
     public Weight() {
         super();
         setMinWeight(0);
@@ -23,34 +24,43 @@ public class Weight extends Meter
         this.maxWeight = maxWeight;
     }
 
-    public double getMinWeight() {
+    //Tilgangsmetoder
+    private double getMinWeight() {
         return minWeight;
     }
 
-    public void setMinWeight(double minWeight) {
+    private void setMinWeight(double minWeight) {
         this.minWeight = minWeight;
     }
 
-    public double getMaxWeight() {
+    private double getMaxWeight() {
         return maxWeight;
     }
 
-    public void setMaxWeight(double maxWeight) {
+    private void setMaxWeight(double maxWeight) {
         this.maxWeight = maxWeight;
     }
+    //Tilgangsmetoder, slutt.
 
+    @Override
     public String toString() {
-        return "Weight{" +
-                "minWeight=" + minWeight +
-                ", maxWeight=" + maxWeight +
-                '}';
+        String text = "";
+        text += "Vekt\n" +
+                "(Måleintervall: " + getMinWeight() + " - " + getMaxWeight() + ")\n" +
+                "Regnummer: " + getRegNr() + "\n" +
+                "Plassering: " + getLocationCode() + "\n";
+        if(this.isWorking())
+            text += "Status: i orden";
+        else
+            text += "Status: i uorden";
+        return text;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Thermometer that = (Thermometer) o;
+        Weight that = (Weight) o;
         return this.getRegNr().equals(that.getRegNr());
     }
 

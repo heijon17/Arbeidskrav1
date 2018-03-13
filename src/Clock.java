@@ -1,15 +1,16 @@
 import java.util.Objects;
 
 /**
- * Write a description of class Clock here.
+ * En klokke med et spesifikk tidsintervall.
  *
  * @author Jon-Martin Heiberg
- * @version v0.1
+ * @version v1.0
  */
 public class Clock extends Meter
 {
     private double minTimeInterval; //i sekunder
 
+    //Standard konstruktør, brukes ikke i dette prosjektet.
     public Clock() {
         super();
         setMinTimeInterval(1);
@@ -20,6 +21,7 @@ public class Clock extends Meter
         setMinTimeInterval(minTimeInterval);
     }
 
+    //Tilgangsmetoder
     private double getMinTimeInterval() {
         return minTimeInterval;
     }
@@ -27,19 +29,27 @@ public class Clock extends Meter
     private void setMinTimeInterval(double minTimeInterval) {
         this.minTimeInterval = minTimeInterval;
     }
+    //Tilgangsmetoder, slutt.
 
     @Override
     public String toString() {
-        return "Clock{" +
-                "minTimeInterval=" + minTimeInterval +
-                '}';
+        String text = "";
+        text += "Klokke\n" +
+                "(Minste tidsintervall: " + getMinTimeInterval() + ")\n" +
+                "Regnummer: " + getRegNr() + "\n" +
+                "Plassering: " + getLocationCode() + "\n";
+        if(this.isWorking())
+            text += "Status: i orden";
+        else
+            text += "Status: i uorden";
+         return text;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Thermometer that = (Thermometer) o;
+        Clock that = (Clock) o;
         return this.getRegNr().equals(that.getRegNr());
     }
 

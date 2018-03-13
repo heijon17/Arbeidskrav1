@@ -1,9 +1,10 @@
 
 /**
- * Write a description of class Meter here.
+ * Abstrakt klasse for måleinstrumenter.
+ * Holder felles egenskaper for alle måleinstrumenter.
  *
  * @author Jon-Martin Heiberg
- * @version v0.1
+ * @version v1.0
  */
 public abstract class Meter
 {
@@ -11,8 +12,8 @@ public abstract class Meter
     private boolean isWorking;
     private String locationCode;
 
+    //Standard konstruktør, brukes ikke i dette prosjektet.
     public Meter() {
-
     }
 
     public Meter(String regNr, boolean isWorking, String locationCode) {
@@ -21,6 +22,7 @@ public abstract class Meter
         setLocationCode(locationCode);
     }
 
+    //Tilgangsmetoder
     protected String getRegNr() {
         return regNr;
     }
@@ -44,6 +46,7 @@ public abstract class Meter
     protected void setLocationCode(String locationCode) {
         this.locationCode = locationCode;
     }
+    //Tilgangsmetoder, slutter.
 
 
 }

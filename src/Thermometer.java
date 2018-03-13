@@ -1,16 +1,17 @@
 import java.util.Objects;
 
 /**
- * Write a description of class Thermometer here.
+ * Et termometer som kan måle temperatur mellom maks og min temp.
  *
  * @author Jon-Martin Heiberg
- * @version v0.1
+ * @version v1.0
  */
 public class Thermometer extends Meter
 {
     private double minDegrees;
     private double maxDegrees;
 
+    //Standard konstruktør, brukes ikke i dette prosjektet.
     public Thermometer(){
         super();
         setMinDegrees(-30);
@@ -23,6 +24,7 @@ public class Thermometer extends Meter
         setMaxDegrees(maxDegrees);
     }
 
+    //Tilgangsmetoder
     private void setMinDegrees(double minDegrees){
         this.minDegrees = minDegrees;
     }
@@ -38,12 +40,20 @@ public class Thermometer extends Meter
     private double getMaxDegrees(){
         return maxDegrees;
     }
+    //Tilgangsmetoder, slutt.
 
+    @Override
     public String toString() {
-        return "Thermometer{" +
-                "minDegrees=" + minDegrees +
-                ", maxDegrees=" + maxDegrees +
-                '}';
+        String text = "";
+        text += "Termometer\n" +
+                "(Min- og maks temp: " + getMinDegrees() + " - " + getMaxDegrees() + ")\n" +
+                "Regnummer: " + getRegNr() + "\n" +
+                "Plassering: " + getLocationCode() + "\n";
+        if(this.isWorking())
+            text += "Status: i orden";
+        else
+            text += "Status: i uorden";
+        return text;
     }
 
     @Override
